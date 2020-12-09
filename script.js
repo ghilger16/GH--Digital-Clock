@@ -1,12 +1,14 @@
 "use strict";
 
-const clockEL = document.querySelector(".clock");
-const messageEL = document.querySelector(".message");
+///// Elements
+const timeEL = document.querySelector(".time");
+const dateEL = document.querySelector(".date");
 
+////// ticking clock
 setInterval(function () {
   const now = new Date();
   const year = now.getFullYear();
-  const months = [
+  const monthList = [
     "January",
     "February",
     "March",
@@ -20,7 +22,7 @@ setInterval(function () {
     "November",
     "December",
   ];
-  const month = months[now.getMonth()];
+  const month = monthList[now.getMonth()];
   const weekdayList = [
     "Sunday",
     "Monday",
@@ -33,9 +35,13 @@ setInterval(function () {
   const weekday = weekdayList[now.getDay()];
   const day = now.getDate();
   const time = now.toLocaleTimeString([], {
+    hour12: true,
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   });
-  messageEL.textContent = `${time} ${weekday}, ${month} ${day} ${year}`;
+
+  //// add to elements
+  timeEL.textContent = time;
+  dateEL.textContent = `${weekday}, ${month} ${day} ${year}`;
 }, 0);

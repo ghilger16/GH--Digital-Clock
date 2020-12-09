@@ -1,7 +1,5 @@
 * {
   margin: 0;
-  padding: 0;
-  box-sizing: inherit;
 }
 body {
   height: 100vh;
@@ -13,16 +11,10 @@ body {
 .clock {
   padding: 20px 30px;
   background-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
-  display: flex;
 }
 
-.hidden {
-  display: none;
-}
-
-.message {
+.time,
+.date {
+  font-size: 40px;
   font-family: "Goudy Bookletter 1911", sans-serif;
-  font-size: 88px;
-  text-align: center;
 }
