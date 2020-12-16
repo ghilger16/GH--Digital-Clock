@@ -1,47 +1,30 @@
 "use strict";
 
-///// Elements
-const timeEL = document.querySelector(".time");
-const dateEL = document.querySelector(".date");
+window.onload = () => {
+  setInterval(currentTime);
+  currentDate();
+};
 
-////// ticking clock
-setInterval(function () {
+function currentDate() {
   const now = new Date();
-  const year = now.getFullYear();
-  const monthList = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const month = monthList[now.getMonth()];
-  const weekdayList = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const weekday = weekdayList[now.getDay()];
   const day = now.getDate();
-  const time = now.toLocaleTimeString([], {
+  const weekday = now.toLocaleString("default", { weekday: "long" });
+  const month = now.toLocaleString("default", { month: "long" });
+  const year = now.getFullYear();
+
+  const dateElement = document.querySelector(".date");
+  dateElement.textContent = `${weekday}, ${month} ${day} ${year}`;
+}
+
+function currentTime() {
+  const now = new Date();
+  const time = now.toLocaleTimeString({
     hour12: true,
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   });
 
-  //// add to elements
-  timeEL.textContent = time;
-  dateEL.textContent = `${weekday}, ${month} ${day} ${year}`;
-}, 0);
+  const timeElement = document.querySelector(".time");
+  timeElement.textContent = time;
+}
